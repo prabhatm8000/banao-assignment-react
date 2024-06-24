@@ -57,26 +57,26 @@ const Post = ({ postData }: { postData: PostDataType }) => {
                             {postData.category}
                         </span>
                     </span>
-                    <div className="flex justify-between items-center gap-6">
+                    <div className="flex justify-between items-center gap-4">
                         <h3 className="text-xl font-bold leading-[1.2]">
                             {postData.title}
                         </h3>
                         <div className="relative inline-block text-left font-semibold">
-                            <div>
-                                <button
-                                    type="button"
-                                    className="inline-flex justify-center items-center w-full bg-gray-100 shadow-sm px-4 py-2 font-medium focus:outline-none"
-                                    id="options-menu"
-                                    aria-haspopup="true"
-                                    aria-expanded="true"
-                                    onClick={toggleOptionDropdown}
-                                >
-                                    <img
-                                        src={optionIconSvg}
-                                        alt="category-icon size-6"
-                                    />
-                                </button>
-                            </div>
+                            <button
+                                type="button"
+                                className="inline-flex justify-center items-center size-8 shadow-sm font-medium focus:outline-none"
+                                id="options-menu"
+                                aria-haspopup="true"
+                                aria-expanded="true"
+                                onClick={toggleOptionDropdown}
+                            >
+                                <img
+                                    width={24}
+                                    height={24}
+                                    src={optionIconSvg}
+                                    alt="category-icon"
+                                />
+                            </button>
 
                             {isOptionOpen && (
                                 <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
