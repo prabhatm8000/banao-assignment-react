@@ -1,4 +1,4 @@
-import { loggedInUserData, postData } from "../assets/data/postData";
+import { loggedInUserData } from "../assets/data/postData";
 import logoSvg from "../assets/images/logo-with-title.svg";
 import searchIconSvg from "../assets/images/search-icon.svg";
 
