@@ -3,7 +3,13 @@ import facebookIconSvg from "../assets/images/facebook-icon.svg";
 import googleIconSvg from "../assets/images/google-icon.svg";
 import signInSvg from "../assets/images/sign-in.svg";
 
-const SignIn = ({ handleCloseBtn, changeIsLoggedInState }: { handleCloseBtn: () => void, changeIsLoggedInState: (newState: boolean) => void }) => {
+const SignIn = ({
+    handleCloseBtn,
+    changeIsLoggedInState,
+}: {
+    handleCloseBtn: () => void;
+    changeIsLoggedInState: (newState: boolean) => void;
+}) => {
     const [formType, setFormType] = useState<"CREATE" | "SIGNIN">("CREATE");
 
     const changeFormType = () => {
@@ -13,9 +19,9 @@ const SignIn = ({ handleCloseBtn, changeIsLoggedInState }: { handleCloseBtn: () 
     return (
         <>
             <div className="fixed inset-0 z-[99] w-full h-full bg-black/40 flex justify-center items-end md:items-center">
-                <div className="fixed z-[100] h-[500px] md:h-[600px] w-full md:max-w-[750px] bg-white rounded-t-md md:rounded-lg">
+                <div className="fixed z-[100] h-[600px] w-full md:max-w-[750px] bg-white rounded-t-md md:rounded-lg">
                     <button
-                        className="absolute hidden md:block end-0 top-0 translate-y-[-150%] translate-x-[150%] z-[101] bg-white rounded-full"
+                        className="absolute hidden md:block end-0 top-0 translate-y-[-150%] z-[101] bg-white rounded-full"
                         onClick={handleCloseBtn}
                     >
                         <svg
@@ -38,7 +44,7 @@ const SignIn = ({ handleCloseBtn, changeIsLoggedInState }: { handleCloseBtn: () 
                     </span>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-5 md:px-10 py-6 md:py-4">
-                        <form className="flex flex-col items-center gap-4 md:gap-8 md:mb-5">
+                        <form className="flex flex-col items-center gap-8 md:mb-5">
                             <div className="flex justify-between items-center w-full">
                                 <h2 className="text-xl md:text-3xl font-bold w-full text-start">
                                     {formType === "SIGNIN"
@@ -66,34 +72,34 @@ const SignIn = ({ handleCloseBtn, changeIsLoggedInState }: { handleCloseBtn: () 
 
                             <div className="w-full flex flex-col items-center">
                                 {formType === "CREATE" && (
-                                    <div className="flex justify-between items-center">
+                                    <div className="flex justify-between items-center w-full">
                                         <input
                                             type="text"
                                             placeholder="First Name"
-                                            className="w-full p-3 font-semibold border border-gray-200"
+                                            className="w-full p-3 font-semibold border border-gray-200 focus:outline-none"
                                         />
                                         <input
                                             type="text"
                                             placeholder="Last Name"
-                                            className="w-full p-3 font-semibold border border-gray-200"
+                                            className="w-full p-3 font-semibold border border-gray-200 focus:outline-none"
                                         />
                                     </div>
                                 )}
                                 <input
                                     type="email"
                                     placeholder="Email"
-                                    className="w-full p-3 font-semibold border border-gray-200"
+                                    className="w-full p-3 font-semibold border border-gray-200 focus:outline-none"
                                 />
                                 <input
                                     type="password"
                                     placeholder="Password"
-                                    className="w-full p-3 font-semibold border border-gray-200"
+                                    className="w-full p-3 font-semibold border border-gray-200 focus:outline-none"
                                 />
                                 {formType === "CREATE" && (
                                     <input
                                         type="password"
                                         placeholder="Confirm Password"
-                                        className="w-full p-3 font-semibold border border-gray-200"
+                                        className="w-full p-3 font-semibold border border-gray-200 focus:outline-none"
                                     />
                                 )}
                             </div>
@@ -103,7 +109,10 @@ const SignIn = ({ handleCloseBtn, changeIsLoggedInState }: { handleCloseBtn: () 
                                 <button
                                     className="w-48 md:w-64 py-2 text-sm rounded-full bg-blue-600 text-white font-semibold"
                                     type="submit"
-                                    onClick={() => changeIsLoggedInState(true)}
+                                    onClick={() => {
+                                        changeIsLoggedInState(true);
+                                        handleCloseBtn();
+                                    }}
                                 >
                                     {formType === "CREATE" && "Create Account"}
                                     {formType === "SIGNIN" && "Sign In"}

@@ -4,6 +4,9 @@ import Post from "./Post";
 import locationSvg from "../assets/images/location.svg";
 import editIconSvg from "../assets/images/edit-icon.svg";
 import infoIconSvg from "../assets/images/info-icon.svg";
+import thumbsupIconSvg from "../assets/images/thumbsup.svg";
+import { recommendedGroups } from "../assets/data/recommendedGroups";
+import GroupCard from "./GroupCard";
 
 const PostSection = ({
     options,
@@ -180,13 +183,15 @@ const PostSection = ({
 
             {/* posts */}
             <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] lg:grid-cols-[3fr_1fr] gap-10 lg:gap-20 justify-center">
+                {/* posts */}
                 <div className="flex flex-col gap-4 justify-center">
                     {postData.map((post) => {
                         return <Post key={post.id} postData={post} />;
                     })}
                 </div>
 
-                <div className="p-4 hidden md:flex flex-col gap-10 sticky top-44 h-96 overflow-y-auto">
+                {/* sidebar */}
+                <div className="p-4 hidden md:flex flex-col gap-10 sticky top-44 h-fit overflow-y-auto">
                     <form className="flex justify-center items-center w-full h-fit border-b border-gray-300 px-2">
                         <img
                             src={locationSvg}
@@ -219,6 +224,33 @@ const PostSection = ({
                             Your location will help us serve better and extend a
                             personalised experience.
                         </span>
+                    </div>
+
+                    <div>
+                        <h6 className="w-full inline-flex items-center gap-2">
+                            <span>
+                                <img
+                                    src={thumbsupIconSvg}
+                                    alt="info-icon"
+                                    className="my-1"
+                                    width={18}
+                                    height={18}
+                                />
+                            </span>
+                            <span className="uppercase">
+                                Recommended Groups
+                            </span>
+                        </h6>
+
+                        <div className="space-y-3">
+                            {recommendedGroups.map((groupData) => {
+                                return <GroupCard key={groupData.id} groupData={groupData} />;
+                            })}
+
+                            <span className="text-blue-600 float-end">
+                                See More...
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
