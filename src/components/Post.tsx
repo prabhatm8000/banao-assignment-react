@@ -64,7 +64,7 @@ const Post = ({ postData }: { postData: PostDataType }) => {
                         <div className="relative inline-block text-left font-semibold">
                             <button
                                 type="button"
-                                className="inline-flex justify-center items-center size-8 shadow-sm font-medium focus:outline-none"
+                                className="inline-flex justify-center items-center size-8 bg-transparent shadow-sm font-medium focus:outline-none"
                                 id="options-menu"
                                 aria-haspopup="true"
                                 aria-expanded="true"
