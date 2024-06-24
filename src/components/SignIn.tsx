@@ -2,6 +2,7 @@ import { useState } from "react";
 import facebookIconSvg from "../assets/images/facebook-icon.svg";
 import googleIconSvg from "../assets/images/google-icon.svg";
 import signInSvg from "../assets/images/sign-in.svg";
+import showPasswordSvg from "../assets/images/show-password.svg";
 
 const SignIn = ({
     handleCloseBtn,
@@ -14,6 +15,19 @@ const SignIn = ({
 
     const changeFormType = () => {
         setFormType(formType === "SIGNIN" ? "CREATE" : "SIGNIN");
+    };
+
+    const handleShowPasswordBtn = () => {
+        const passwordInput = document.getElementById(
+            "password-input"
+        ) as HTMLInputElement;
+        if (passwordInput) {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
     };
 
     return (
@@ -52,6 +66,7 @@ const SignIn = ({
                                         : "Create Account"}
                                 </h2>
                                 <button
+                                    type="button"
                                     className="md:hidden bg-white rounded-full"
                                     onClick={handleCloseBtn}
                                 >
@@ -90,11 +105,27 @@ const SignIn = ({
                                     placeholder="Email"
                                     className="w-full p-3 font-semibold border border-gray-200 focus:outline-none"
                                 />
-                                <input
-                                    type="password"
-                                    placeholder="Password"
-                                    className="w-full p-3 font-semibold border border-gray-200 focus:outline-none"
-                                />
+                                <div className="w-full flex items-center p-3 font-semibold border border-gray-200">
+                                    <input
+                                        id="password-input"
+                                        type="password"
+                                        placeholder="Password"
+                                        className="w-full focus:outline-none"
+                                    />
+                                    <button
+                                        type="button"
+                                        className="p-2"
+                                        onClick={handleShowPasswordBtn}
+                                    >
+                                        <img
+                                            width={28}
+                                            height={28}
+                                            className="w-full"
+                                            src={showPasswordSvg}
+                                            alt="show-password-icon"
+                                        />
+                                    </button>
+                                </div>
                                 {formType === "CREATE" && (
                                     <input
                                         type="password"
