@@ -151,6 +151,7 @@ const SignIn = ({
                                 <button
                                     className="md:hidden underline"
                                     onClick={changeFormType}
+                                    type="button"
                                 >
                                     {formType === "CREATE" && "or, Sign In"}
                                     {formType === "SIGNIN" &&
